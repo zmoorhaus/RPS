@@ -29,9 +29,11 @@ function getComputerChoice() {
      console.log("You chose paper");
      } else if (humanChoice.toLowerCase() === "scissors") {
      console.log("You chose scissors")
-     
-     
+     } else {
+        alert("That's not a great choice... Try again?")
      }
+     
+     
      return humanChoice;
  }
 
@@ -46,17 +48,32 @@ function playRound() {
     || (computerChoice === "paper" && userChoice === "rock" )
     || (computerChoice === "scissors" && userChoice === "paper")) {
     computerScore++
-    alert(`Computer wins!\nComputer: ${computerScore}\nYou: ${humanScore}`)
+    alert(`Computer chose ${computerChoice}, you chose ${userChoice}\nComputer wins!\nComputer: ${computerScore}\nYou: ${humanScore}`)
     } else if ((computerChoice === "rock" && userChoice === "paper") 
     || (computerChoice === "paper" && userChoice === "scissors")
     || (computerChoice === "scissors" && userChoice === "rock")) {
     humanScore++
-    alert(`You win! Computer: ${computerScore}, you: ${humanScore}`)
+    alert(`Computer chose ${computerChoice}, you chose ${userChoice}\nYou win!\nComputer: ${computerScore}\nYou: ${humanScore}`)
     } else if (computerChoice === userChoice) {
-        alert("TIE")
-    } else {
-        return "ERROR";
+        alert(`Computer chose ${computerChoice}, you chose ${userChoice}\nTie!\nComputer: ${computerScore}\nYou: ${humanScore}`)
     }
 }
 
-playRound();
+function playGame() {
+    
+    for (let i = 0; i < 5; i++) {
+    let round = playRound();
+    }
+
+    if (computerScore === humanScore) {
+        alert("THAT IS A TIE GAME") 
+    } else if (computerScore > humanScore) {
+        alert("COMPUTER WINS THE GAME")
+    } else if (humanScore > computerScore) {
+        alert("YOU WIN THE GAME!")
+    }
+}
+
+playGame();
+   
+
