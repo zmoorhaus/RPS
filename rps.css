@@ -1,0 +1,67 @@
+
+
+body {
+    margin: 0px;
+    
+   
+}
+
+#page {
+    display: flex;
+    flex-direction: column;
+    
+
+}
+
+#banner {
+    border: 80px solid #ADD8E6;
+
+}
+
+
+#rps {
+    display: flex;
+    justify-content: space-around;
+    border: 100px solid lightslategrey;
+    background-color: lightslategray;
+    
+}
+
+h1 {
+    display: flex;
+    justify-content: center;
+    background-color: #ADD8E6;
+    font-size: 50px;
+    margin: 0;
+    font-family: "Roboto", sans-serif;
+    font-weight: 900;
+}
+
+img {
+    width: 250px;
+    height: 200px;
+}
+
+button {
+    border-color: white;
+    border-radius: 10px;
+}
+
+#textSpace {
+   
+    display: flex;
+    justify-content: center;
+    background-color: #ADD8E6;
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    font-size: x-large;
+    text-align: center;
+
+}
+
+
+#bottomPage {
+    border: 100px solid #ADD8E6;
+    padding-bottom: 200px;
+    background-color: #ADD8E6;
+}

@@ -1,7 +1,5 @@
-console.log("ayyy")
-
 let computerScore = 0;
-let humanScore = 0;
+    let humanScore = 0;
 
 function getComputerChoice() {
 
@@ -16,31 +14,56 @@ function getComputerChoice() {
     } else if (number === 2) {
      computerChoice = "scissors";
     }
-    console.log("Computer chose " + computerChoice);
+    
     return computerChoice;
      
  }
+
  
- function getHumanChoice() {
-     let humanChoice = prompt("Rock, Paper, or Scissors?")
-     if (humanChoice.toLowerCase() === "rock") {
-     console.log("You chose rock"); 
-     } else if (humanChoice.toLowerCase() === "paper") {
-     console.log("You chose paper");
-     } else if (humanChoice.toLowerCase() === "scissors") {
-     console.log("You chose scissors")
-     } else {
-        alert("That's not a great choice... Try again?")
-     }
-     
-     
-     return humanChoice;
- }
+
+ const rock = document.createElement("button");
+ const rockPic = document.createElement('img');
+ rockPic.src = "rock.jpeg";
+ rock.id = "rock";
+ rock.appendChild(rockPic);
+
+ const paper = document.createElement("button");
+ const paperPic = document.createElement('img');
+ paperPic.src = "paper.jpg";
+ paper.id = "paper";
+ paper.appendChild(paperPic);
 
 
-function playRound() {
+ const scissors = document.createElement("button")
+ const scissorsPic = document.createElement('img');
+ scissorsPic.src = "scissors.jpeg";
+ scissors.id = "scissors";
+ scissors.appendChild(scissorsPic);
 
-    let userChoice = getHumanChoice();
+ const page = document.getElementById('page');
+
+ const rps = document.getElementById('rps');
+ rps.append(rock, paper, scissors);
+
+ const buttons = document.querySelectorAll("button");
+
+ let textSpace = document.getElementById('textSpace');
+
+
+ 
+ buttons.forEach((button) => {
+    button.addEventListener("click", () => {
+        let userChoice = button.id;
+        let round = playGame(userChoice)
+        
+    });
+
+
+ });
+ 
+
+function playGame(userChoice) {
+  
     let computerChoice = getComputerChoice();
     
 
@@ -48,32 +71,30 @@ function playRound() {
     || (computerChoice === "paper" && userChoice === "rock" )
     || (computerChoice === "scissors" && userChoice === "paper")) {
     computerScore++
-    alert(`Computer chose ${computerChoice}, you chose ${userChoice}\nComputer wins!\nComputer: ${computerScore}\nYou: ${humanScore}`)
+    textSpace.innerHTML = `${userChoice} vs. ${computerChoice}<br>Computer wins this round!<br>You: ${humanScore} Computer: ${computerScore} `;
     } else if ((computerChoice === "rock" && userChoice === "paper") 
     || (computerChoice === "paper" && userChoice === "scissors")
     || (computerChoice === "scissors" && userChoice === "rock")) {
     humanScore++
-    alert(`Computer chose ${computerChoice}, you chose ${userChoice}\nYou win!\nComputer: ${computerScore}\nYou: ${humanScore}`)
+    textSpace.innerHTML = `${userChoice} vs. ${computerChoice}<br>You win this round!<br>You: ${humanScore} Computer: ${computerScore}`;
     } else if (computerChoice === userChoice) {
-        alert(`Computer chose ${computerChoice}, you chose ${userChoice}\nTie!\nComputer: ${computerScore}\nYou: ${humanScore}`)
+        textSpace.innerHTML = `${userChoice} vs. ${computerChoice}<br>Tie!<br>You: ${humanScore} Computer: ${computerScore}`;
+    }
+
+    if (computerScore + humanScore === 5) {
+        if (computerScore === humanScore) {
+            alert("THAT IS A TIE GAME") 
+        } else if (computerScore > humanScore) {
+        textSpace.textContent = "COMPUTER WINS THE GAME!";
+        } else if (humanScore > computerScore) {
+        textSpace.textContent = "YOU WIN THE GAME!";
+        }
+        computerScore = 0;
+        humanScore = 0;
     }
 }
 
-function playGame() {
-    
-    for (let i = 0; i < 5; i++) {
-    let round = playRound();
-    }
 
-    if (computerScore === humanScore) {
-        alert("THAT IS A TIE GAME") 
-    } else if (computerScore > humanScore) {
-        alert("COMPUTER WINS THE GAME")
-    } else if (humanScore > computerScore) {
-        alert("YOU WIN THE GAME!")
-    }
-}
 
-playGame();
    
 
